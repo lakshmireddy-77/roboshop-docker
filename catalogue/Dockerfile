@@ -7,7 +7,8 @@ COPY server.js .
 # installing depenidies
 RUN npm install
 ENV MONGO=true \
-    MONGO_URL="mongodb://mongodb:27017/catalogue"
+    REDIS_URL="'redis://redis:6379'"\
+    MONGO_URL="mongodb://mongodb:27017/users"
 # start the service ExecStart=/bin/node /app/server.js
 # we alraeady in server floder 
 CMD ["node","server.js"]

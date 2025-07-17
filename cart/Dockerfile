@@ -1,0 +1,14 @@
+FROM node:20
+# i am giving this my wkd
+WORKDIR /opt/server
+# copy the files . means pwd
+COPY package.json .
+COPY server.js .
+# installing depenidies
+RUN npm install
+ENV     REDIS_HOST=redis \
+        CATALOGUE_HOST=catalogue \
+        CATALOGUE_PORT=8080
+# start the service ExecStart=/bin/node /app/server.js
+# we alraeady in server floder 
+CMD ["node","server.js"]
