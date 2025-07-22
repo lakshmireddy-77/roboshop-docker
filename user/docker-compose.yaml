@@ -57,4 +57,15 @@ services:
     - rabbitmq
     - user
     - cart
-    
+  frontend:
+    image: lakshmi315/frontend:v1
+    container_name: frontend
+    # here we need to expose that why we need to use -p 
+    ports:
+    - "80:80"
+    depends_on:
+    - cart
+    - catalogue
+    - user
+    - shipping
+    - payment

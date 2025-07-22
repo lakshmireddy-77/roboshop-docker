@@ -148,4 +148,87 @@ docker compose up -d
 
 --------------------
 frontend:
+docker build -t lakshmi315/frontend:v1
+docker compose up -d 
+
+Application : break
+======================
+login into frontend:
+docker exec -it frontend bash
+cd /usr/share/nginx/html
+ls -l
+changes in docker file:
+ADD static  /usr/share/nginx/html/
+still same issues:
+catagories no loaded
+cd /etc/nginx/
+ls -l
+# there is a file conf.d this may over the nginx.conf data
+cd /etc/nginx/conf.d
+ls -l
+so we need to remove that 
+git pull
+docker build -t lakshmi315/frontend:v1 --no-cache .
+docker compose up -d 
+# now cities are not loadig
+docer exec -it mysql:v1 bash
+mysql -u root -pRoboShop@1
+show databases
+use citites
+show tables
+select count(*) from cities
+# here in the scrpit it is creatinga nd updatng data gain it droping and creating
+delete schema file
+we can tell in inteview:
+========================
+devlopers provides the .sql files if there are any changes in db strcuture , by mistakley 2 develpoers created same sql filewith differnt names
+one sql file is created the table and insrted the data. another file droping the table 
+recreadted but does,'t insert the data . se we lost the data in db
+this happened in dev environement but it becaome a big issue and escalated
+
+to down-----> docker compose down
+so here if we done the docer is that previous user is presentn or not present
+no it is not present beacuse contanser are phemeral by default if we removethem they will remove entrie data by default
+# now we need to optizise the decrasing image size and storing data in temporary
+solution:
+docker volumns
+cd ..
+docker run -d -p 8080:80 nginx
+docker exec -it <id> bash
+we can write one html file for testing
+cd /usr/share/nginx/html/
+echo "hello" > hello.html
+exit
+docker rm -f <id> ----remove and run gain we will see the data is present or not
+where the data is present:
+sudo su -
+docker insepect <id>
+it creates random dir and stroe the data into them
+cd /merged/usr/share/nginx/html/
+-----volums---------
+mkdir nginx
+
+docker run -d - 8080:80 -v /home/ec2-user/nginx-data:/usr/nginx/html nginx
+it will stre the data in given floder
+
+
+
+
+===========================================
+Optimization:
+===================
+docker login -u lakshmi315
+cd roboshop-docker
+
+for i in $(ls -d */);
+do cd $i;
+name=$(basename "$i);
+docker build -i lakshmi315/$name:v1 . ;
+docker push lakshmi315/$name 
+
+this is build image and push images
+base name means it removes the / in names it gives  only names
+
+1. use minimal official images
+catalogue --> 
 
