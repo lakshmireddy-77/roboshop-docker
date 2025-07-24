@@ -25,7 +25,7 @@ curl http://localhost:8080/health  ---> sucess mesans catalogue runnng fine
 failure:
 =======
 docker logs catalogue
-ipconfig 
+ifconfig 
 who will provid the internet to vm ---> aws --> this is ethernet port 
 here we are installing docker so docker inetrenally/viruvally created one network ---> this is called docker o ---> This is like mode M.
 whenever we are creating docker container it will allocate the IP 
@@ -53,7 +53,7 @@ docker always suggest to create custom bridge network
 
 
 docker network create roboshop ----> to crate network
-before connectining we need to disconnect:
+before connectining we need to disconnect from bridge:
 docker network disconnect bridge catalogue
 docker network disconnect bridge mongodb
 docker network ls
