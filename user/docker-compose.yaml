@@ -75,7 +75,7 @@ services:
     image: lakshmi315/frontend:v1
     container_name: frontend
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
     - catalogue
     - user
