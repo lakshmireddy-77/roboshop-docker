@@ -200,7 +200,7 @@ solution:
 docker volumns
 cd ..
 docker run -d -p 8080:80 nginx
-docker exec -it <id> bash
+docker exec -it <id> bas    h
 we can write one html file for testing
 cd /usr/share/nginx/html/
 echo "hello" > hello.html
@@ -236,5 +236,6 @@ this is build image and push images
 base name means it removes the / in names it gives  only names
 
 1. use minimal official images
-catalogue --> 
+catalogue --> FROM node:20-alphine3.21
+
 
