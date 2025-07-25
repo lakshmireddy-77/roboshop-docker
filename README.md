@@ -113,6 +113,11 @@ for i in cart catalogue mongodb mysql shipping user; do cd $i; docker build -t j
 
 docker compose:
 ================
+docker login -u lakshmi315
+for all images  run and building:
+----------------------
+for i in cart catalogue mongodb mysql shipping user ; do cd $i; docker build -t lakshmi315/$i:v1 . ; docker push lakshmi315/$i:v1 ; cd ..; done
+
 it is a command line tool for  multi container application
 we can define all docker containers as service. 
 create dependies b/w them start them at onces and stop them at onces 
@@ -125,6 +130,7 @@ cart depends on catalogue
 
 here we we run cart without catalogue and db the applications is not run. and we need to remebers the flow which we need to run 1st
 so instead of we have docker compose
+
 
 what is our run command:
 -----------------------

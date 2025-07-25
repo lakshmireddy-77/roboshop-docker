@@ -2,6 +2,8 @@ networks:
   default:
     driver: bridge
     name: roboshop
+    external: false
+      
 services:
   mongodb:
     image: lakshmi315/mongodb:v1
