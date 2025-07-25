@@ -1,71 +1,37 @@
-# networks:
-#   default:
-#     driver: bridge
-#     name: roboshop
-#     external: true
-# services:
-#   mongodb:
-#     image: lakshmi315/mongodb:v1
-#     container_name: mongodb
-#   catalogue:
-#     image: lakshmi315/catalogue:v1
-#     container_name: catalogue
-#     depends_on:
-#     - mongodb
-#   redis:
-#     image: redis:7.0
-#     container_name: redis
-#   user:
-#     image: lakshmi315/user:v1
-#     container_name: user
-#     depends_on:
-#     - redis
-#     - mongodb
-#   cart:
-#     image: lakshmi315/cart:v1
-#     container_name: cart
-#     depends_on:
-#     - catalogue
-#     - redis
-#   mysql:
-#     image: lakshmi315/mysql:v1
-#     container_name: mysql
-#   shipping:
-#     image: lakshmi315/shipping:v1
-#     container_name: shipping
-#     depends_on:
-#     - mysql
-#     - cart
-#   rabbimq:
-#     image: rabbitmq:3
-#     container_name: rabbitmq
-# # we can set default user and password
-#     environment:
-#       RABBITMQ_DEFAULT_USER: roboshop
-#       RABBITMQ_DEFAULT_PASS: roboshop123
-# # by default it contain all permissions
-#   payment:
-#     image: lakshmi315/payment:v1
-#     container_name: payment
-#     environment:
-#       CART_HOST: cart
-#       CART_PORT: 8080
-#       USER_HOST: user
-#       USER_PORT: 8080
-#       AMQP_HOST: rabbitmq
-#     depends_on:
-#     - rabbitmq
-#     - user
-#     - cart
-#   frontend:
-#     image: lakshmi315/frontend:v1
-#     container_name: frontend
-#     # here we need to expose that why we need to use -p 
-#     ports:
-#     - "80:80"
-#     depends_on:
-#     - cart
-#     - catalogue
-#     - user
-#     - shipping
-#     - payment
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+services:
+  mongodb:
+    image: lakshmi315/mongodb:v1
+    container_name: mongodb
+  catalogue:
+    image: lakshmi315/catalogue:v1
+    container_name: catalogue
+    depends_on:
+    - mongodb
+  redis:
+    image: redis:7.0
+    container_name: redis
+  user:
+    image: lakshmi315/user:v1
+    container_name: user
+    depends_on:
+    - redis
+    - mongodb
+  cart:
+    image: lakshmi315/cart:v1
+    container_name: cart
+    depends_on:
+    - catalogue
+    - redis
+  mysql:
+    image: lakshmi315/mysql:v1
+    container_name: mysql
+  shipping:
+    image: lakshmi315/shipping:v1
+    container_name: shipping
+    depends_on:
+    - mysql
+    - cart
