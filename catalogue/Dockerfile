@@ -8,9 +8,9 @@ RUN npm install
 
 FROM node:20-alpine3.21
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
- ENV MONGO=true \
-    REDIS_URL="'redis://redis:6379'"\
-    MONGO_URL="mongodb://mongodb:27017/users"
+ ENV MONGO="true"
+  ENV  REDIS_URL="'redis://redis:6379'"
+  ENV  MONGO_URL="mongodb://mongodb:27017/users"
 WORKDIR /opt/server
 USER roboshop
 COPY --from=builder /opt/server /opt/server/
